@@ -1,4 +1,4 @@
-# Best-sellers block
+# Block Cart
 
 ## Contributing
 
@@ -9,3 +9,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
 Contributors **must** follow the following rules:
 
 * Do not update the module's version number.
+
+## Roadmap
+
+[View](https://github.com/thirtybees/blockcart/blob/master/Roadmap.md)
