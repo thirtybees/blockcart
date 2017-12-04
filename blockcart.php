@@ -367,7 +367,7 @@ class BlockCart extends Module
                 'free_shipping'       => $totalFreeShipping,
             ]
         );
-        if (count($errors)) {
+        if (is_array($errors) && count($errors)) {
             $this->smarty->assign('errors', $errors);
         }
         if (isset($this->context->cookie->ajax_blockcart_display)) {
