@@ -9,5 +9,4 @@ short_description: The block cart module is the module with thirty bees that all
 description: description.md
 images:
   - image-1.png
-  - image-2.png
 license: MIT
