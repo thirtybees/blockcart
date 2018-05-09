@@ -1,1 +1,7 @@
-*blockcart*.zip
+
+/translations/*
+!/translations/index.php
+
+/config*.xml
+
+blockcart-*.zip
