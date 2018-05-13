@@ -10,3 +10,4 @@ description: description.md
 images:
   - image-1.png
 license: MIT
+gdpr_compliant: true
