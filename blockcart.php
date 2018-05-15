@@ -50,7 +50,7 @@ class BlockCart extends Module
         $this->bootstrap = true;
         parent::__construct();
 
-        $this->displayName = $this->l('Cart block');
+        $this->displayName = $this->l('Block Cart');
         $this->description = $this->l('Adds a block containing the customer\'s shopping cart.');
     }
 
