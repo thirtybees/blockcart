@@ -9,5 +9,5 @@ description_short: The block cart module is the module in thirty bees that allow
 description: description.md
 images:
   - image-1.png
-license: MIT
 gdpr_compliant: true
+license: MIT
