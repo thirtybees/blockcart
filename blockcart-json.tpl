@@ -1,13 +1,13 @@
-{*
- * 2007-2016 PrestaShop
+{**
+ * Copyright (C) 2017-2018 thirty bees
+ * Copyright (C) 2007-2016 PrestaShop SA
  *
- * thirty bees is an extension to the PrestaShop e-commerce software developed by PrestaShop SA
- * Copyright (C) 2017 thirty bees
+ * thirty bees is an extension to the PrestaShop software by PrestaShop SA.
  *
  * NOTICE OF LICENSE
  *
  * This source file is subject to the Academic Free License (AFL 3.0)
- * that is bundled with this package in the file LICENSE.txt.
+ * that is bundled with this package in the file LICENSE.md.
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/afl-3.0.php
  * If you did not receive a copy of the license and are unable to
@@ -18,9 +18,10 @@
  * @author    PrestaShop SA <contact@prestashop.com>
  * @copyright 2017 thirty bees
  * @copyright 2007-2016 PrestaShop SA
- * @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- * PrestaShop is an internationally registered trademark & property of PrestaShop SA
-*}
+ * @license   Academic Free License (AFL 3.0)
+ * PrestaShop is an internationally registered trademark of PrestaShop SA.
+ *}
+
 {ldelim}
 "products": [
 {if $products}
@@ -32,7 +33,7 @@
 		"link":          "{$link->getProductLink($product.id_product, $product.link_rewrite, $product.category, null, null, $product.id_shop, $product.id_product_attribute)|addslashes|replace:'\\\'':'\''}",
 		"quantity":      {$product.cart_quantity|intval},
 		"priceByLine":   "{if $priceDisplay == $smarty.const.PS_TAX_EXC}{displayWtPrice|html_entity_decode:2:'UTF-8' p=$product.total}{else}{displayWtPrice|html_entity_decode:2:'UTF-8' p=$product.total_wt}{/if}",
-		"image":         "{$link->getImageLink($product.link_rewrite, $product.id_image, 'home_default')|addslashes|replace:'\\\'':'\''}",		
+		"image":         "{$link->getImageLink($product.link_rewrite, $product.id_image, 'home_default')|addslashes|replace:'\\\'':'\''}",
 		"name":          "{$product.name|html_entity_decode:2:'UTF-8'|truncate:15:'...':true|escape:'html'}",
 		"price":         "{if $priceDisplay == $smarty.const.PS_TAX_EXC}{displayWtPrice|html_entity_decode:2:'UTF-8' p=$product.total}{else}{displayWtPrice|html_entity_decode:2:'UTF-8' p=$product.total_wt}{/if}",
 		"price_float":   "{$product.total}",
