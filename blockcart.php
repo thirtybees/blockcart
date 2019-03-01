@@ -292,6 +292,11 @@ class BlockCart extends Module
             $this->smarty->assign('tax_cost', Tools::displayPrice($totalToPay - $totalToPayWithoutTaxes, $currency));
         }
 
+        $displayPrecision = 0;
+        if ($currency->decimals) {
+            $displayPrecision = Configuration::get('PS_PRICE_DISPLAY_PRECISION');
+        }
+
         // The cart content is altered for display
         foreach ($cartRules as &$cartRule) {
             if ($cartRule['free_shipping']) {
@@ -307,11 +312,11 @@ class BlockCart extends Module
                     ) {
                         $product['total_wt'] = Tools::ps_round(
                             $product['total_wt'] - $product['price_wt'],
-                            (int) $currency->decimals * _PS_PRICE_DISPLAY_PRECISION_
+                            $displayPrecision
                         );
                         $product['total'] = Tools::ps_round(
                             $product['total'] - $product['price'],
-                            (int) $currency->decimals * _PS_PRICE_DISPLAY_PRECISION_
+                            $displayPrecision
                         );
                         if ($product['cart_quantity'] > 1) {
                             array_splice($products, $key, 0, [$product]);
@@ -321,11 +326,11 @@ class BlockCart extends Module
                         $product['is_gift'] = 1;
                         $cartRule['value_real'] = Tools::ps_round(
                             $cartRule['value_real'] - $product['price_wt'],
-                            (int) $currency->decimals * _PS_PRICE_DISPLAY_PRECISION_
+                            $displayPrecision
                         );
                         $cartRule['value_tax_exc'] = Tools::ps_round(
                             $cartRule['value_tax_exc'] - $product['price'],
-                            (int) $currency->decimals * _PS_PRICE_DISPLAY_PRECISION_
+                            $displayPrecision
                         );
                     }
                 }
