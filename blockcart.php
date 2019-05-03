@@ -53,6 +53,7 @@ class BlockCart extends Module
         $this->displayName = $this->l('Block Cart');
         $this->description = $this->l('Adds a block containing the customer\'s shopping cart.');
         $this->tb_versions_compliancy = '> 1.0.0';
+        $this->tb_min_version = '1.0.0';
     }
 
     /**
