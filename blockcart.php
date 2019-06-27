@@ -43,7 +43,7 @@ class BlockCart extends Module
     {
         $this->name = 'blockcart';
         $this->tab = 'front_office_features';
-        $this->version = '2.0.3';
+        $this->version = '2.0.4';
         $this->author = 'thirty bees';
         $this->need_instance = 0;
 
