@@ -199,19 +199,15 @@ class BlockCart extends Module
      */
     public function install()
     {
-        if (
-            parent::install() == false
-            || $this->registerHook('top') == false
-            || $this->registerHook('header') == false
-            || $this->registerHook('actionCartListOverride') == false
-            || Configuration::updateValue('PS_BLOCK_CART_AJAX', 1) == false
-            || Configuration::updateValue('PS_BLOCK_CART_XSELL_LIMIT', 12) == false
-            || Configuration::updateValue('PS_BLOCK_CART_SHOW_CROSSSELLING', 1) == false
-        ) {
-            return false;
-        }
-
-        return true;
+        return (
+            parent::install() &&
+            $this->registerHook('top') &&
+            $this->registerHook('header') &&
+            $this->registerHook('actionCartListOverride') &&
+            Configuration::updateValue('PS_BLOCK_CART_AJAX', 1) &&
+            Configuration::updateValue('PS_BLOCK_CART_XSELL_LIMIT', 12) &&
+            Configuration::updateValue('PS_BLOCK_CART_SHOW_CROSSSELLING', 1)
+        );
     }
 
     /**
@@ -374,13 +370,13 @@ class BlockCart extends Module
                 'nb_total_products'   => (int) ($nbTotalProducts),
                 'shipping_cost'       => $shippingCost,
                 'shipping_cost_float' => $shippingCostFloat,
-                'show_wrapping'       => $wrappingCost > 0 ? true : false,
+                'show_wrapping'       => $wrappingCost > 0,
                 'show_tax'            => (int) (Configuration::get('PS_TAX_DISPLAY') == 1 && (int) Configuration::get('PS_TAX')),
                 'wrapping_cost'       => Tools::displayPrice($wrappingCost, $currency),
                 'product_total'       => Tools::displayPrice($params['cart']->getOrderTotal($useTax, Cart::BOTH_WITHOUT_SHIPPING), $currency),
                 'total'               => Tools::displayPrice($totalToPay, $currency),
                 'order_process'       => Configuration::get('PS_ORDER_PROCESS_TYPE') ? 'order-opc' : 'order',
-                'ajax_allowed'        => (int) (Configuration::get('PS_BLOCK_CART_AJAX')) == 1 ? true : false,
+                'ajax_allowed'        => (int) (Configuration::get('PS_BLOCK_CART_AJAX')) == 1,
                 'static_token'        => Tools::getToken(false),
                 'free_shipping'       => $totalFreeShipping,
             ]
