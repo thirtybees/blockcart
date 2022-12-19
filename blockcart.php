@@ -29,15 +29,14 @@ if (!defined('_TB_VERSION_')) {
 
 /**
  * Class BlockCart
- *
- * @since 1.0.0
  */
 class BlockCart extends Module
 {
     /**
      * BlockCart constructor.
      *
-     * @since 1.0.0
+     * @throws PrestaShopDatabaseException
+     * @throws PrestaShopException
      */
     public function __construct()
     {
@@ -59,7 +58,9 @@ class BlockCart extends Module
     /**
      * @return string
      *
-     * @since 1.0.0
+     * @throws PrestaShopDatabaseException
+     * @throws PrestaShopException
+     * @throws SmartyException
      */
     public function getContent()
     {
@@ -88,7 +89,9 @@ class BlockCart extends Module
     /**
      * @return string
      *
-     * @since 1.0.0
+     * @throws PrestaShopDatabaseException
+     * @throws PrestaShopException
+     * @throws SmartyException
      */
     public function renderForm()
     {
@@ -175,7 +178,7 @@ class BlockCart extends Module
     /**
      * @return array
      *
-     * @since 1.0.0
+     * @throws PrestaShopException
      */
     public function getConfigFieldsValues()
     {
@@ -189,7 +192,8 @@ class BlockCart extends Module
     /**
      * @return bool
      *
-     * @since 1.0.0
+     * @throws PrestaShopDatabaseException
+     * @throws PrestaShopException
      */
     public function install()
     {
@@ -213,7 +217,9 @@ class BlockCart extends Module
      *
      * @return string
      *
-     * @since 1.0.0
+     * @throws PrestaShopDatabaseException
+     * @throws PrestaShopException
+     * @throws SmartyException
      */
     public function hookLeftColumn($params)
     {
@@ -225,7 +231,9 @@ class BlockCart extends Module
      *
      * @return string|null
      *
-     * @since 1.0.0
+     * @throws PrestaShopDatabaseException
+     * @throws PrestaShopException
+     * @throws SmartyException
      */
     public function hookRightColumn($params)
     {
@@ -248,7 +256,8 @@ class BlockCart extends Module
     /**
      * @param array $params
      *
-     * @since 1.0.0
+     * @throws PrestaShopDatabaseException
+     * @throws PrestaShopException
      */
     public function assignContentVars($params)
     {
@@ -385,9 +394,11 @@ class BlockCart extends Module
     /**
      * @param array $params
      *
-     * @return array|mixed|string|void
+     * @return false|string|void
      *
-     * @since 1.0.0
+     * @throws PrestaShopDatabaseException
+     * @throws PrestaShopException
+     * @throws SmartyException
      */
     public function hookAjaxCall($params)
     {
@@ -416,7 +427,8 @@ class BlockCart extends Module
     /**
      * @param array $params
      *
-     * @since 1.0.0
+     * @throws PrestaShopException
+     * @throws SmartyException
      */
     public function hookActionCartListOverride($params)
     {
@@ -425,11 +437,13 @@ class BlockCart extends Module
         }
 
         $this->assignContentVars(['cookie' => $this->context->cookie, 'cart' => $this->context->cart]);
+        /** @noinspection PhpArrayUsedOnlyForWriteInspection */
+        /** @noinspection PhpArrayWriteIsNotUsedInspection */
         $params['json'] = $this->display(__FILE__, 'blockcart-json.tpl');
     }
 
     /**
-     * @since 1.0.0
+     * @throws PrestaShopException
      */
     public function hookHeader()
     {
@@ -449,7 +463,9 @@ class BlockCart extends Module
      *
      * @return null|string
      *
-     * @since 1.0.0
+     * @throws PrestaShopDatabaseException
+     * @throws PrestaShopException
+     * @throws SmartyException
      */
     public function hookDisplayNav($params)
     {
@@ -463,7 +479,9 @@ class BlockCart extends Module
      *
      * @return null|string
      *
-     * @since 1.0.0
+     * @throws PrestaShopDatabaseException
+     * @throws PrestaShopException
+     * @throws SmartyException
      */
     public function hookTop($params)
     {

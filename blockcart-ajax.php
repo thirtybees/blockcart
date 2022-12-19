@@ -22,8 +22,11 @@
  * @license   Academic Free License (AFL 3.0)
  * PrestaShop is an internationally registered trademark of PrestaShop SA.
  */
+/** @noinspection PhpUnhandledExceptionInspection */
 
-// @TODO Find the reason why the blockcart.php is includ multiple time
 $context = Context::getContext();
+
+/** @var BlockCart $blockCart */
 $blockCart = Module::getInstanceByName('blockcart');
+
 echo $blockCart->hookAjaxCall(['cookie' => $context->cookie, 'cart' => $context->cart]);
