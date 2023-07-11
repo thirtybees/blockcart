@@ -300,10 +300,7 @@ class BlockCart extends Module
             $this->smarty->assign('tax_cost', Tools::displayPrice($totalToPay - $totalToPayWithoutTaxes, $currency));
         }
 
-        $displayPrecision = 0;
-        if ($currency->decimals) {
-            $displayPrecision = Configuration::get('PS_PRICE_DISPLAY_PRECISION');
-        }
+        $displayPrecision = $this->getCurrencyDisplayPrecision($currency);
 
         // The cart content is altered for display
         foreach ($cartRules as &$cartRule) {
@@ -486,5 +483,22 @@ class BlockCart extends Module
         $params['blockcart_top'] = true;
 
         return $this->hookRightColumn($params);
+    }
+
+    /**
+     * @param Currency $currency
+     *
+     * @return int
+     * @throws PrestaShopException
+     */
+    protected function getCurrencyDisplayPrecision($currency)
+    {
+        if (method_exists($currency, 'getDisplayPrecision')) {
+            return $currency->getDisplayPrecision();
+        }
+        if ($currency->decimals) {
+            return (int)Configuration::get('PS_PRICE_DISPLAY_PRECISION');
+        }
+        return 0;
     }
 }
